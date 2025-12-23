@@ -33,7 +33,7 @@ const Sidebar = ({ activeTab, setActiveTab, token }) => {
       }}
     >
       {/* Аватарка и имя внизу */}
-      <div style={{ flex: 1 }} /> {/* Пространство сверху */}
+      <div style={{ flex: 1 }} />
 
       <div
         style={{
@@ -82,7 +82,7 @@ const Sidebar = ({ activeTab, setActiveTab, token }) => {
         </div>
       </div>
 
-      {/* Меню вкладок */}
+      {/* Меню */}
       <nav style={{ padding: '20px 0' }}>
         {menuItems.map((item) => (
           <button
@@ -102,12 +102,8 @@ const Sidebar = ({ activeTab, setActiveTab, token }) => {
               gap: '12px',
               transition: 'background 0.2s',
             }}
-            onMouseOver={(e) =>
-              !activeTab === item.id && (e.currentTarget.style.background = '#e9ecef')
-            }
-            onMouseOut={(e) =>
-              !activeTab === item.id && (e.currentTarget.style.background = 'transparent')
-            }
+            onMouseOver={(e) => (e.currentTarget.style.background = activeTab !== item.id ? '#e9ecef' : '#007bff')}
+            onMouseOut={(e) => (e.currentTarget.style.background = activeTab === item.id ? '#007bff' : 'transparent')}
           >
             <span style={{ fontSize: '1.4em' }}>{item.icon}</span>
             {item.label}
